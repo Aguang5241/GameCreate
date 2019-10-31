@@ -29,41 +29,342 @@
 
 class Main extends egret.DisplayObjectContainer {
 
-
-
     public constructor() {
         super();
         this.addEventListener(egret.Event.ADDED_TO_STAGE, this.onAddToStage, this);
     }
 
     private onAddToStage(event: egret.Event) {
-        // 设定偏移量
-        var offsetX: number;
-        var offsetY: number;
-        // 圆
-        var circle: egret.Shape = new egret.Shape();
-        circle.graphics.beginFill(0xff0000);
-        circle.graphics.drawCircle(25, 25, 25);
-        circle.graphics.endFill();
-        this.addChild(circle);
-        // 触发startMove()方法
-        circle.touchEnabled = true;
-        circle.addEventListener(egret.TouchEvent.TOUCH_BEGIN, startMove, this);
-        // 触发endMove()方法
-        circle.addEventListener(egret.TouchEvent.TOUCH_END, endMove, this);
-        // 定义相关函数
-        function startMove(e: egret.TouchEvent): void {
-            offsetX = e.stageX - circle.x;
-            offsetY = e.stageY - circle.y;
-            this.stage.addEventListener(egret.TouchEvent.TOUCH_MOVE, onMove, this);
-        }
-        function endMove(e: egret.TouchEvent): void {
-            this.stage.removeEventListener(egret.TouchEvent.TOUCH_MOVE, onMove, this);
-        }
-        function onMove(e: egret.TouchEvent): void {
-            circle.x = e.stageX - offsetX;
-            circle.y = e.stageY - offsetY;
-        }
+        // 背景
+        let background: egret.Sprite = new egret.Sprite();
+        background.graphics.beginFill(0xeeeeee);
+        background.graphics.drawRect(0, 0, 640, 1136);
+        background.graphics.endFill();
+        this.addChild(background);
+    }
+}
+
+//     private onAddToStage(event: egret.Event) {
+//         // 背景
+//         let background: egret.Sprite = new egret.Sprite();
+//         background.graphics.beginFill(0xeeeeee);
+//         background.graphics.drawRect(0, 0, 640, 1136);
+//         background.graphics.endFill();
+//         this.addChild(background);
+
+//         // 添加文本
+//         this.drawText();
+
+//         // 绘制矩形
+//         let shape: egret.Sprite = new egret.Sprite();
+//         shape.graphics.beginFill(0x007abc);
+//         shape.graphics.drawRect(0, 0, 300, 100);
+//         shape.graphics.endFill();
+//         background.addChild(shape);
+
+//         // 开启触发事件
+//         shape.touchEnabled = true;
+
+//         // 注册侦听器
+//         shape.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouch, this);
+//         background.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchTap, this);
+//         background.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchTaps, this);
+//     }
+
+//     private onTouch(evt: egret.TouchEvent) {
+//         this.showText.text += '点击了1';
+//     }
+
+//     private onTouchTap(evt: egret.TouchEvent) {
+//         this.showText.text += '点击了2';
+//     }
+
+//     private onTouchTaps(evt: egret.TouchEvent) {
+//         this.showText.text += '点击了3'
+//     }
+
+//     private showText: egret.TextField;
+    
+//     private drawText(): void {
+//         this.showText = new egret.TextField();
+//         this.showText.width = 200;
+//         this.showText.height = 200;
+//         this.showText.text = '事件文字';
+//         this.addChild(this.showText);
+//     }
+// }
+
+// class SampleDate extends egret.DisplayObjectContainer {
+//     public constructor() {
+//         super();
+//         var boy: Boy = new Boy();
+//         boy.name = 'aguang';
+//         var girl: Girl = new Girl();
+//         girl.name = 'zipei';
+//         boy.addEventListener(DateEvent.DATE, girl.getDate, girl);
+//         boy.order();
+//         boy.removeEventListener(DateEvent.DATE, girl.getDate, girl);
+//     }
+// }
+
+// class Boy extends egret.Sprite {
+//     public constructor() {
+//         super();
+//     }
+//     public order() {
+//         var dateEvent: DateEvent = new DateEvent(DateEvent.DATE);
+//         dateEvent._year = 2019;
+//         dateEvent._month = 11;
+//         dateEvent._day = 1;
+//         dateEvent._where = '肯德基';
+//         dateEvent._todo = '共进晚餐';
+//         this.dispatchEvent(dateEvent);
+//     }
+// }
+
+// class Girl extends egret.Sprite {
+//     public constructor() {
+//         super();
+//     }
+//     public getDate(evt: DateEvent) {
+//         console.log("得到了" + evt.target.name + "的邀请！");
+//         console.log("会在" + evt._year + "年" + evt._month + "月" + evt._day + "日，在" + evt._where + evt._todo);
+//     }
+// }
+
+// class DateEvent extends egret.Event {
+//     public static DATE: string = '约会';
+//     public _year: number = 0;
+//     public _month: number = 0;
+//     public _day: number = 0;
+//     public _where: string = '';
+//     public _todo: string = '';
+//     public constructor(type: string, bubbles: boolean = false, cancelable: boolean = false) {
+//         super(type, bubbles, cancelable);
+//     }
+// }
+
+//     private onAddToStage(event: egret.Event) {
+//         // 背景
+//         let background: egret.Sprite = new egret.Sprite();
+//         background.graphics.beginFill(0xeeeeee);
+//         background.graphics.drawRect(0, 0, 640, 1136);
+//         background.graphics.endFill();
+//         this.addChild(background);
+
+//         // 普通文本
+//         // 创建文本类
+//         let testText: egret.TextField = new egret.TextField();
+//         // 添加内容
+//         testText.text = 'aguang is a handsome boy';
+//         // 字体
+//         testText.fontFamily = 'Times';
+//         // 字号
+//         testText.size = 45;
+//         // 颜色
+//         testText.textColor = 0x007abc;
+//         // 描边
+//         testText.stroke = 3;
+//         testText.strokeColor = 0xaaaaaa;
+//         // 粗体与斜体
+//         testText.bold = true;
+//         testText.italic = true;
+//         // 设置尺寸
+//         testText.width = 640;
+//         testText.height = 1136;
+//         // 文本居中
+//         testText.textAlign = egret.HorizontalAlign.CENTER;
+//         testText.verticalAlign = egret.VerticalAlign.MIDDLE;
+//         // 添加到显示列表
+//         background.addChild(testText);
+
+//         // json方式分段设置样式
+//         let testText2: egret.TextField = new egret.TextField();
+//         testText2.textFlow = <Array<egret.ITextElement>>[
+//             {text: 'Aguang', style: {'textColor': 0xff0000, 'size':45}},
+//             {text: 'is a handsome boy', style: {'textColor':0xff0000, 'size':20}},
+//             {text: 'This is a link to Baidu', style: {'href': 'https://www.baidu.com'}}
+//         ];
+//         testText2.touchEnabled = true;
+//         background.addChild(testText2);
+
+//         // // 输入文本
+//         // // 普通输入文本
+//         // let inputText: egret.TextField = new egret.TextField();
+//         // // 指定输入类型
+//         // inputText.type = egret.TextFieldType.INPUT;
+//         // inputText.inputType = egret.TextFieldInputType.TEXT;
+//         // testText.text = '请输入内容：'
+//         // // 设置输入框样式
+//         // inputText.width = 300;
+//         // inputText.height = 50;
+//         // inputText.y = 50;
+//         // inputText.textColor = 0x007abc;
+//         // // 边框样式
+//         // inputText.border = true;
+//         // inputText.borderColor = 0x00ff00;
+//         // // 字体描边
+//         // inputText.stroke = 3;
+//         // inputText.strokeColor = 0xff0000;
+//         // // 添加到显示列表
+//         // background.addChild(inputText);
+
+//         // // 密码输入文本
+//         // let passText: egret.TextField = new egret.TextField();
+//         // passText.type = egret.TextFieldType.INPUT;
+//         // passText.inputType = egret.TextFieldInputType.PASSWORD;
+//         // // 密码显示设置
+//         // passText.displayAsPassword = true;
+//         // passText.text = '请输入密码：';
+//         // passText.y = 150;
+//         // passText.width = 300;
+//         // passText.border = true;
+//         // passText.borderColor = 0x00ff00;
+//         // background.addChild(passText);
+
+//         // // 电话输入文本
+//         // var telText: egret.TextField = new egret.TextField();
+//         // telText.type = egret.TextFieldType.INPUT;
+//         // telText.inputType = egret.TextFieldInputType.TEL;
+//         // telText.text = '请输入电话：';
+//         // telText.y = 250;
+//         // telText.width = 300;
+//         // telText.border = true;
+//         // telText.borderColor = 0x00ff00;
+//         // background.addChild(telText);
+//     }
+// }
+
+//     private onAddToStage(event: egret.Event) {
+        // 背景
+        // let background: egret.Sprite = new egret.Sprite();
+        // background.graphics.beginFill(0xeeeeee);
+        // background.graphics.drawRect(0, 0, 640, 1136);
+        // background.graphics.endFill();
+        // this.addChild(background);
+
+//         // 矩形碰撞检测
+//         this.drawText();
+//         let shape1: egret.Sprite = new egret.Sprite();
+//         shape1.graphics.beginFill(0x007abc);
+//         shape1.graphics.drawRect(0, 0, 100, 100);
+//         shape1.graphics.endFill();
+//         this.addChild(shape1);
+//         let testX: number = 101;
+//         let textY: number = 101;
+//         let isHit: boolean = shape1.hitTestPoint(testX, textY)
+//         this.infoText.text = 'isHit:' + isHit;
+//     }
+
+//     private infoText: egret.TextField;
+
+//     private drawText() {
+//         this.infoText = new egret.TextField();
+//         this.infoText.y = 200;
+//         this.infoText.text = 'isHit';
+//         this.infoText.textColor = 0xff0000;
+//         this.addChild(this.infoText);
+//     }
+// }
+    // private onAddToStage(event: egret.Event) {
+        // 遮罩
+        // let shape1: egret.Rectangle = new egret.Rectangle(10,10,100,100);
+        // let shape2: egret.Sprite = new egret.Sprite();
+        // shape2.graphics.beginFill(0xff0000);
+        // shape2.graphics.drawCircle(50, 50, 50);
+        // shape2.graphics.endFill();
+        // background.addChild(shape2);
+        // shape2.mask = shape1;
+
+        // 深度管理
+        // var shape1:egret.Sprite = new egret.Sprite();
+        // shape1.graphics.beginFill(0xFA8072);
+        // shape1.graphics.drawRect(0, 0, 100, 200);
+        // shape1.graphics.endFill();
+        // // shape1.name = 'shapeX';
+        // background.addChild(shape1);
+        // var shape2:egret.Sprite = new egret.Sprite();
+        // shape2.graphics.beginFill(0xA0522D);
+        // shape2.graphics.drawRect(0, 0, 100, 200);
+        // shape2.graphics.endFill();
+        // shape2.x = 50;
+        // shape2.y = 50;
+        // background.addChild(shape2);
+        // var shape3:egret.Sprite = new egret.Sprite();
+        // shape3.graphics.beginFill(0x8B814C);
+        // shape3.graphics.drawRect(0, 0, 100, 200);
+        // shape3.graphics.endFill();
+        // shape3.x = 100;
+        // shape3.y = 100;
+        // background.addChild(shape3);
+        // var shape4:egret.Sprite = new egret.Sprite();
+        // shape4.graphics.beginFill(0x7A378B);
+        // shape4.graphics.drawRect(0, 0, 100, 200);
+        // shape4.graphics.endFill();
+        // shape4.x = 150;
+        // shape4.y = 150;
+        // // shape4.name = 'shapeX';
+        // background.addChild(shape4);
+        // var shape5:egret.Sprite = new egret.Sprite();
+        // shape5.graphics.beginFill(0x383838);
+        // shape5.graphics.drawRect(0, 0, 100, 200);
+        // shape5.graphics.endFill();
+        // shape5.x = 200;
+        // shape5.y = 200;
+        // // shape5.name = 'shapeX';
+        // background.addChild(shape5);
+        // var shape6:egret.Sprite = new egret.Sprite();
+        // shape6.graphics.beginFill(0xABABAB);
+        // shape6.graphics.drawRect(0, 0, 300, 100);
+        // shape6.graphics.endFill();
+        // shape6.x = 70;
+        // shape6.y = 70;
+        // shape6.name = 'shapeX';
+        // background.addChildAt(shape6, 3);
+        // 移除显示对象
+        // background.removeChild(shape6);
+        // background.removeChildAt(4);
+        // background.removeChildren();
+        // 交换不同深度显示对象
+        // background.swapChildren(shape1, shape2);
+        // background.swapChildrenAt(1, 2);
+        // 设置显示对象深度
+        // background.sortableChildren = true;
+        // shape1.zIndex = 5;
+        // background.setChildIndex(shape1, 1);
+        // 获取显示对象
+        // var _shape: egret.DisplayObject = background.getChildByName('shapeX');
+        // var _shape: egret.DisplayObject = background.getChildAt(5);
+        // _shape.alpha = 0.5;
+        // console.log(background.numChildren);
+
+        // // 设定偏移量
+        // var offsetX: number;
+        // var offsetY: number;
+        // // 圆
+        // var circle: egret.Shape = new egret.Shape();
+        // circle.graphics.beginFill(0xff0000);
+        // circle.graphics.drawCircle(25, 25, 25);
+        // circle.graphics.endFill();
+        // this.addChild(circle);
+        // // 触发startMove()方法
+        // circle.touchEnabled = true;
+        // circle.addEventListener(egret.TouchEvent.TOUCH_BEGIN, startMove, this);
+        // // 触发endMove()方法
+        // circle.addEventListener(egret.TouchEvent.TOUCH_END, endMove, this);
+        // // 定义相关函数
+        // function startMove(e: egret.TouchEvent): void {
+        //     offsetX = e.stageX - circle.x;
+        //     offsetY = e.stageY - circle.y;
+        //     this.stage.addEventListener(egret.TouchEvent.TOUCH_MOVE, onMove, this);
+        // }
+        // function endMove(e: egret.TouchEvent): void {
+        //     this.stage.removeEventListener(egret.TouchEvent.TOUCH_MOVE, onMove, this);
+        // }
+        // function onMove(e: egret.TouchEvent): void {
+        //     circle.x = e.stageX - offsetX;
+        //     circle.y = e.stageY - offsetY;
+        // }
 
         // // 创建container实例继承自egret.DisplayObjectContainer
         // var container: egret.DisplayObjectContainer = new egret.DisplayObjectContainer();
@@ -117,7 +418,7 @@ class Main extends egret.DisplayObjectContainer {
 
 
 
-    }
+    // }
 
     // private async runGame() {
     //     await this.loadResource()
@@ -363,7 +664,7 @@ class Main extends egret.DisplayObjectContainer {
         // textfield.x = 172;
         // textfield.y = 135;
         // this.textfield = textfield;
-    }
+    // }
 
     // private drawBorderProgress(): egret.DisplayObjectContainer {
     //     var container: egret.DisplayObjectContainer = new egret.DisplayObjectContainer();
