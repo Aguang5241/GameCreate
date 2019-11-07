@@ -16,7 +16,6 @@ cc.Class({
             default: null,
             type: cc.Label
         },
-        ballNum: 3,
         appleProgress: {
             default: null,
             type: cc.ProgressBar
@@ -25,7 +24,7 @@ cc.Class({
 
     randomPos: function(apple) {
         var randX = Math.random() * (this.node.width - 20 - apple.width) - this.node.width / 2 + apple.width / 2 + 10;
-        var randY = Math.random() * (this.node.height / 2 - apple.height / 2 - 10);
+        var randY = Math.random() * (this.node.height / 2 - apple.height / 2 - 10 - 50); // 50:标题栏高度;10:墙体宽度
         return cc.v2(randX, randY)
     },
 
@@ -82,6 +81,7 @@ cc.Class({
         };
         this.createBall();
         // 初始化球球数量
+        this.ballNum = this.ballPrefabPoolCapacity;
         this.ballNumLabel.string = 'x ' + this.ballNum;
         // 初始化进度条
         this.appleProgress.progress = 0;

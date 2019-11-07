@@ -165,7 +165,7 @@
       "array": [
         0,
         0,
-        510.9549865722656,
+        497.09857177734375,
         0,
         0,
         0,
@@ -236,7 +236,7 @@
       "width": 480,
       "height": 800
     },
-    "_fitWidth": false,
+    "_fitWidth": true,
     "_fitHeight": true,
     "_id": "71XDXD8+NEg4A8IL1sfb2B"
   }

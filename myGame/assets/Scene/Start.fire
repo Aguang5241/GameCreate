@@ -355,8 +355,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 202,
-      "height": 81
+      "width": 153,
+      "height": 61
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -368,7 +368,7 @@
       "ctor": "Float32Array",
       "array": [
         0,
-        184.89100646972656,
+        175,
         0,
         0,
         0,
@@ -424,8 +424,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 202,
-      "height": 81
+      "width": 151.45454275948663,
+      "height": 60.830781796130964
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -479,15 +479,15 @@
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 0,
-      "g": 0,
-      "b": 0,
+      "r": 255,
+      "g": 255,
+      "b": 255,
       "a": 255
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 202,
-      "height": 81
+      "width": 153,
+      "height": 61
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -499,7 +499,7 @@
       "ctor": "Float32Array",
       "array": [
         0,
-        0,
+        6.256999969482422,
         0,
         0,
         0,
@@ -537,13 +537,15 @@
       }
     ],
     "_useOriginalSize": false,
-    "_string": "开始游戏",
-    "_N$string": "开始游戏",
+    "_string": "Start",
+    "_N$string": "Start",
     "_fontSize": 40,
     "_lineHeight": 40,
     "_enableWrapText": false,
-    "_N$file": null,
-    "_isSystemFontUsed": true,
+    "_N$file": {
+      "__uuid__": "6b94ceb2-a46d-4867-bb71-693c6bfc4cf9"
+    },
+    "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_batchAsBitmap": false,
     "_N$horizontalAlign": 1,
@@ -598,10 +600,10 @@
     "alignMode": 0,
     "_target": null,
     "_alignFlags": 45,
-    "_left": 0,
-    "_right": 0,
-    "_top": 0,
-    "_bottom": 0,
+    "_left": 0.7727286202566859,
+    "_right": 0.7727286202566859,
+    "_top": 0.0846091019345181,
+    "_bottom": 0.0846091019345181,
     "_verticalCenter": 0,
     "_horizontalCenter": 0,
     "_isAbsLeft": true,
@@ -717,7 +719,7 @@
       "width": 480,
       "height": 800
     },
-    "_fitWidth": false,
+    "_fitWidth": true,
     "_fitHeight": true,
     "_id": "49ZGRaA2JOurWjbUQTXVO1"
   }

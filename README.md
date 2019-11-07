@@ -67,3 +67,6 @@ onLoad () {
     cc.director.getCollisionManager().enabled = true;
 },
 ```
+## 关于屏幕适配
+`fitHeight`
+`fitWidth`

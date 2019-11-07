@@ -479,9 +479,9 @@
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 0,
-      "g": 0,
-      "b": 0,
+      "r": 255,
+      "g": 255,
+      "b": 255,
       "a": 255
     },
     "_contentSize": {
@@ -499,7 +499,7 @@
       "ctor": "Float32Array",
       "array": [
         0,
-        42,
+        47.81800079345703,
         0,
         0,
         0,
@@ -537,13 +537,15 @@
       }
     ],
     "_useOriginalSize": false,
-    "_string": "重新开始",
-    "_N$string": "重新开始",
-    "_fontSize": 36,
+    "_string": "Restart",
+    "_N$string": "Restart",
+    "_fontSize": 40,
     "_lineHeight": 40,
     "_enableWrapText": false,
-    "_N$file": null,
-    "_isSystemFontUsed": true,
+    "_N$file": {
+      "__uuid__": "6b94ceb2-a46d-4867-bb71-693c6bfc4cf9"
+    },
+    "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_batchAsBitmap": false,
     "_N$horizontalAlign": 1,
@@ -717,7 +719,7 @@
       "width": 480,
       "height": 800
     },
-    "_fitWidth": false,
+    "_fitWidth": true,
     "_fitHeight": true,
     "_id": "42laCR6m1CHL8ZyWUWZfsC"
   }
