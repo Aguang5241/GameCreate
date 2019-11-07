@@ -1,0 +1,13 @@
+{
+  "excludeScenes": [],
+  "orientation": {
+    "landscapeLeft": true,
+    "landscapeRight": true,
+    "portrait": false,
+    "upsideDown": false
+  },
+  "packageName": "org.cocos2d.FlappyBird01",
+  "startScene": "4050e2b1-2549-4158-b2fd-7e4e043d9c46",
+  "title": "FlappyBird01",
+  "webOrientation": "auto"
+}
