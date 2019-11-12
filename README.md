@@ -99,3 +99,11 @@ cc.Class({
 * 其中`event.acc.x; event.acc.y`的值分别为(-1, 1)，表示四个方向的加速度大小
 * `event.acc.x`对应屏幕横向轴，由左到右数值为-1到1
 * `event.acc.y`对应屏幕纵向轴，有下到上数值为-1到1
+## 关于动态加载资源
+* 预先将需要的动态加载资源放置在assets/resourses文件夹之下
+```javascript
+var self = this;
+cc.loader.loadRes('white', cc.SpriteFrame, function(err, SpriteFrame) {
+    self.player.getComponent(cc.Sprite).spriteFrame = SpriteFrame;
+})
+```
