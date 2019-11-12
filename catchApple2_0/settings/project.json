@@ -1,5 +1,4 @@
 {
-  "start-scene": "current",
   "group-list": [
     "default"
   ],
@@ -9,27 +8,28 @@
     ]
   ],
   "excluded-modules": [],
-  "last-module-event-record-time": 1573302092345,
-  "design-resolution-width": 960,
-  "design-resolution-height": 640,
-  "fit-width": false,
+  "last-module-event-record-time": 1573221005861,
+  "design-resolution-width": 1280,
+  "design-resolution-height": 720,
+  "fit-width": true,
   "fit-height": true,
   "use-project-simulator-setting": false,
   "simulator-orientation": false,
-  "use-customize-simulator": false,
+  "use-customize-simulator": true,
   "simulator-resolution": {
-    "width": 960,
-    "height": 640
+    "height": 640,
+    "width": 960
   },
   "assets-sort-type": "name",
   "facebook": {
-    "enable": false,
     "appID": "",
-    "live": {
-      "enable": false
-    },
     "audience": {
       "enable": false
+    },
+    "enable": false,
+    "live": {
+      "enable": false
     }
-  }
+  },
+  "start-scene": "486cb501-465b-45c9-8144-becbab5b7647"
 }

@@ -1,4 +1,8 @@
 # 游戏开发笔记
+## 游戏游戏分析
+### 棍子英雄
+## 世上最大坑
+* 千千万万不要命名同样的js文件，即使在不同文件夹里面，虽然程序可以正常运行，但是编译会出现错误！！！
 ## 关于节点和组件
 * `getComponent()`方法针对于获得所在节点上的组件
 * 对于获得其他节点，最简单的方法就是在属性检查器中引用
@@ -68,5 +72,30 @@ onLoad () {
 },
 ```
 ## 关于屏幕适配
+* 选取1280 * 720 （1.7777778）
 `fitHeight`
 `fitWidth`
+## 关于物理系统
+* 如果子节点绑定了物理系统，其位移将不会随着父节点变化
+## 关于重力感应
+```javascript
+cc.Class({
+    extends: cc.Component,
+    onLoad () {
+        // open Accelerometer
+        cc.systemEvent.setAccelerometerEnabled(true);
+        cc.systemEvent.on(cc.SystemEvent.EventType.DEVICEMOTION, this.onDeviceMotionEvent, this);
+    },
+
+    onDestroy () {
+        cc.systemEvent.off(cc.SystemEvent.EventType.DEVICEMOTION, this.onDeviceMotionEvent, this);
+    },
+
+    onDeviceMotionEvent (event) {
+        cc.log(event.acc.x + "   " + event.acc.y);
+    },
+});
+```
+* 其中`event.acc.x; event.acc.y`的值分别为(-1, 1)，表示四个方向的加速度大小
+* `event.acc.x`对应屏幕横向轴，由左到右数值为-1到1
+* `event.acc.y`对应屏幕纵向轴，有下到上数值为-1到1
