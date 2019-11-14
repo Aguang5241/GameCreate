@@ -107,3 +107,11 @@ cc.loader.loadRes('white', cc.SpriteFrame, function(err, SpriteFrame) {
     self.player.getComponent(cc.Sprite).spriteFrame = SpriteFrame;
 })
 ```
+## 关于龙骨动画
+```javascript
+console.log(this.node.getComponent(dragonBones.ArmatureDisplay).getArmatureNames()); // 获取动画所有的ArmatureNames
+console.log(this.node.getComponent(dragonBones.ArmatureDisplay).armatureName); // 获取当前armatureName
+this.node.getComponent(dragonBones.ArmatureDisplay).armatureName = 'StayStill'; // 指定armatureName
+this.node.getComponent(dragonBones.ArmatureDisplay).armatureName = 'Walk';
+this.node.getComponent(dragonBones.ArmatureDisplay).playAnimation('Walk', 0); // 播放armatureName
+```
