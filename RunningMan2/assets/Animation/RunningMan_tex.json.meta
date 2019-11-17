@@ -1,0 +1,7 @@
+{
+  "ver": "1.0.0",
+  "uuid": "5437fb35-fb6a-4446-8007-f1468aa8dc14",
+  "atlasJson": "{\"width\":128,\"SubTexture\":[{\"width\":94,\"y\":38,\"height\":19,\"name\":\"斗篷\",\"x\":1},{\"width\":43,\"y\":1,\"height\":18,\"name\":\"后退小腿\",\"x\":65},{\"width\":33,\"y\":107,\"height\":18,\"name\":\"后退大腿\",\"x\":34},{\"width\":24,\"y\":59,\"height\":7,\"name\":\"后胳膊小臂\",\"x\":69},{\"width\":6,\"y\":21,\"height\":20,\"name\":\"后胳膊大臂\",\"x\":98},{\"width\":32,\"y\":59,\"height\":46,\"name\":\"身体\",\"x\":1},{\"width\":22,\"y\":68,\"height\":16,\"name\":\"前胳膊小臂\",\"x\":97},{\"width\":31,\"y\":21,\"height\":11,\"name\":\"前胳膊大臂\",\"x\":65},{\"width\":12,\"y\":1,\"height\":40,\"name\":\"前腿小腿\",\"x\":110},{\"width\":31,\"y\":107,\"height\":20,\"name\":\"前腿大腿\",\"x\":1},{\"width\":19,\"y\":43,\"height\":23,\"name\":\"头\",\"x\":97},{\"width\":62,\"y\":1,\"height\":35,\"name\":\"斗笠\",\"x\":1}],\"height\":128,\"name\":\"RunningMan\",\"imagePath\":\"RunningMan_tex.png\"}",
+  "texture": "d57ceaca-4f3f-432b-9eed-4871eba0db9b",
+  "subMetas": {}
+}

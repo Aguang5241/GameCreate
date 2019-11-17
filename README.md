@@ -1,13 +1,16 @@
 # 游戏开发笔记
 ## 游戏游戏分析
 ### 棍子英雄
+
 ## 世上最大坑
 * 千千万万不要命名同样的js文件，即使在不同文件夹里面，虽然程序可以正常运行，但是编译会出现错误！！！
+
 ## 关于节点和组件
 * `getComponent()`方法针对于获得所在节点上的组件
 * 对于获得其他节点，最简单的方法就是在属性检查器中引用
 * `this.node.parent`可以获取当前节点的父节点
 * 对于label节点，无法直接在其绑定的组件（脚本）中使用`this.node.string = 'xxx'`进行修改，应该将label作为节点进行引用后再修改其文本内容，而且必须事先声明其type为cc.Label
+
 ## 组件之间的通讯方法：
 * 发送方使用module.export，接收方使用require
 ```javascript
@@ -23,6 +26,7 @@ var Global = require("Global");
 ```javascript
 newStar.getComponent('Star').game = this;
 ```
+
 ## 对象池
 * 对象池的使用会有点问题，有待解决
 ```JavaScript
@@ -57,6 +61,7 @@ onEnemyKilled: function (enemy) {
     // this.enemyPool.put(enemy); // 和初始化时的方法一样，将节点放进对象池，这个方法会同时调用节点的 removeFromParent
 },
 ```
+
 ## 碰撞检测
 * 设置碰撞边缘及tag
 * 在被检测节点设置组件，内容如下
@@ -71,12 +76,15 @@ onLoad () {
     cc.director.getCollisionManager().enabled = true;
 },
 ```
+
 ## 关于屏幕适配
 * 选取1280 * 720 （1.7777778）
 `fitHeight`
 `fitWidth`
+
 ## 关于物理系统
 * 如果子节点绑定了物理系统，其位移将不会随着父节点变化
+
 ## 关于重力感应
 ```javascript
 cc.Class({
@@ -99,6 +107,7 @@ cc.Class({
 * 其中`event.acc.x; event.acc.y`的值分别为(-1, 1)，表示四个方向的加速度大小
 * `event.acc.x`对应屏幕横向轴，由左到右数值为-1到1
 * `event.acc.y`对应屏幕纵向轴，有下到上数值为-1到1
+
 ## 关于动态加载资源
 * 预先将需要的动态加载资源放置在assets/resourses文件夹之下
 ```javascript
@@ -107,11 +116,30 @@ cc.loader.loadRes('white', cc.SpriteFrame, function(err, SpriteFrame) {
     self.player.getComponent(cc.Sprite).spriteFrame = SpriteFrame;
 })
 ```
+
 ## 关于龙骨动画
 ```javascript
-console.log(this.node.getComponent(dragonBones.ArmatureDisplay).getArmatureNames()); // 获取动画所有的ArmatureNames
-console.log(this.node.getComponent(dragonBones.ArmatureDisplay).armatureName); // 获取当前armatureName
-this.node.getComponent(dragonBones.ArmatureDisplay).armatureName = 'StayStill'; // 指定armatureName
+// 获取动画所有的ArmatureNames
+console.log(this.node.getComponent(dragonBones.ArmatureDisplay).getArmatureNames()); 
+// 获取当前armatureName
+console.log(this.node.getComponent(dragonBones.ArmatureDisplay).armatureName); 
+// 指定armatureName
+this.node.getComponent(dragonBones.ArmatureDisplay).armatureName = 'StayStill'; 
 this.node.getComponent(dragonBones.ArmatureDisplay).armatureName = 'Walk';
-this.node.getComponent(dragonBones.ArmatureDisplay).playAnimation('Walk', 0); // 播放armatureName
+// 播放armatureName
+this.node.getComponent(dragonBones.ArmatureDisplay).playAnimation('Walk', 0); 
+// 动画播放一次结束后的回调函数方法
+this.node.getComponent(dragonBones.ArmatureDisplay).on(dragonBones.EventObject.COMPLETE, function(){
+    this.node.getComponent(dragonBones.ArmatureDisplay).playAnimation('run', 0) 
+}, this)
+```
+
+## 关于动作系统
+* `cc.delayTime(0.66)`可以巧妙地应用在动作系统里面执行一个空动作
+```javascript
+cc.sequence(
+    cc.moveTo(0.17, cc.v2(-400, -250)).easing(cc.easeCubicActionOut()),
+    cc.delayTime(0.66),
+    cc.moveTo(0.17, cc.v2(-400, -220)).easing(cc.easeCubicActionIn())
+);
 ```
