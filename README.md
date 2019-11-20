@@ -84,7 +84,16 @@ onLoad () {
 
 ## 关于物理系统
 * 如果子节点绑定了物理系统，其位移将不会随着父节点变化
-
+```javascript
+// 开启物理系统
+cc.director.getPhysicsManager().enabled = true;
+// 获得刚体
+this.rigidBody = this.node.getComponent(cc.RigidBody);
+// 获得线性速度
+var currentSpeed = this.rigidBody.linearVelocity;
+// 向刚体质心施加一个力
+this.rigidBody.applyForceToCenter(cc.v2(0, this.jumpForce), true);
+```
 ## 关于重力感应
 ```javascript
 cc.Class({
@@ -143,3 +152,8 @@ cc.sequence(
     cc.moveTo(0.17, cc.v2(-400, -220)).easing(cc.easeCubicActionIn())
 );
 ```
+
+## 关于坐标
+* `cc.v2(x1, y1)`是一个`object`类型，不能直接拿来作比较，并不能得到正确的结果
+* 两点之间的向量差`cc.v2(10, 8).sub(cc.v2(5, 4)) == cc.v2(5, 4)`
+* 两点之间的距离`cc.v2(0, 4).sub(cc.v2(3, 0)).mag() == 5`
