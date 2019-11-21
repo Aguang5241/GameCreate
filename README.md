@@ -157,3 +157,17 @@ cc.sequence(
 * `cc.v2(x1, y1)`是一个`object`类型，不能直接拿来作比较，并不能得到正确的结果
 * 两点之间的向量差`cc.v2(10, 8).sub(cc.v2(5, 4)) == cc.v2(5, 4)`
 * 两点之间的距离`cc.v2(0, 4).sub(cc.v2(3, 0)).mag() == 5`
+
+## 关于物理组件
+* 要使用链接物理组件首先要绑定物理碰撞组件
+### MotorJoint
+* 该组件可以实现绑定刚体与被绑定刚体的相对运动
+* `Max Force` 作用在绑定刚体上的最大力
+* `Correction Factor` 位置矫正系数，从0-1矫正程度由强到弱
+### DistanceJoint
+* 该组件能够保持两个刚体之间的距离不变
+* `Distance` 指定距离
+* `Frequency` 指定弹性系数，有一种橡皮筋的感觉，其值越大橡皮筋越硬
+### RevoluteJoint
+* `Max Motor Torque` 表示旋转的增速幅度大小
+* `Motor Speed` 表示期望最终达到的旋转速度

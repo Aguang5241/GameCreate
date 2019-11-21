@@ -30,7 +30,37 @@
                 <key>spriteSourceSize</key>
                 <string>{96,200}</string>
                 <key>textureRect</key>
-                <string>{{200,0},{96,200}}</string>
+                <string>{{0,109},{96,200}}</string>
+                <key>textureRotated</key>
+                <false/>
+            </dict>
+            <key>block3.png</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,0}</string>
+                <key>spriteSize</key>
+                <string>{200,170}</string>
+                <key>spriteSourceSize</key>
+                <string>{200,170}</string>
+                <key>textureRect</key>
+                <string>{{0,309},{200,170}}</string>
+                <key>textureRotated</key>
+                <false/>
+            </dict>
+            <key>block4.png</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,0}</string>
+                <key>spriteSize</key>
+                <string>{200,61}</string>
+                <key>spriteSourceSize</key>
+                <string>{200,61}</string>
+                <key>textureRect</key>
+                <string>{{0,479},{200,61}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
@@ -46,9 +76,9 @@
             <key>realTextureFileName</key>
             <string>blocks.png</string>
             <key>size</key>
-            <string>{296,200}</string>
+            <string>{200,540}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:2fe5079fe0a473563205b97f58fce4c5:34eec003d599c8f73608e1c221ea2316:6879c3dd6674ea1c839ff03f70487b56$</string>
+            <string>$TexturePacker:SmartUpdate:351194a2a4c7e278d81801a8357411ab:8921e8ecfe1e8f846cc9cdc320c362fe:6879c3dd6674ea1c839ff03f70487b56$</string>
             <key>textureFileName</key>
             <string>blocks.png</string>
         </dict>
