@@ -28,7 +28,7 @@ newStar.getComponent('Star').game = this;
 ```
 
 ## 对象池
-* 对象池的使用会有点问题，有待解决
+* 如果在预制对象上绑定了物理系统，需要在对应脚本上开启物理系统，否则生成的预制对象物理系统失效
 ```JavaScript
 onLoad() {
     this.enemyPool = new cc.NodePool();
@@ -48,6 +48,7 @@ createEnemy: function () {
     } else { // 如果没有空闲对象，也就是对象池中备用对象不够时，我们就用 cc.instantiate 重新创建
         enemy = cc.instantiate(this.enemyPrefab);
     }
+    enemy.setPosition(xxx) // 一定要在加入节点树之前设置位置，否则无效
     this.node.addChild(enemy); // 将生成的敌人加入节点树
     // enemy.getComponent('Enemy').init(); // 接下来就可以调用 enemy 身上的脚本进行初始化
     enemy.getComponent('Enemy').game = this; // 在Enemy组件上暂存Game组件的引用
@@ -62,7 +63,7 @@ onEnemyKilled: function (enemy) {
 },
 ```
 
-## 碰撞检测
+## 关于碰撞系统
 * 设置碰撞边缘及tag
 * 在被检测节点设置组件，内容如下
 ```JavaScript
@@ -93,6 +94,28 @@ this.rigidBody = this.node.getComponent(cc.RigidBody);
 var currentSpeed = this.rigidBody.linearVelocity;
 // 向刚体质心施加一个力
 this.rigidBody.applyForceToCenter(cc.v2(0, this.jumpForce), true);
+```
+* 碰撞回调函数
+```javascript
+// 只在两个碰撞体开始接触时被调用一次
+onBeginContact: function (contact, selfCollider, otherCollider) {
+},
+
+// 只在两个碰撞体结束接触时被调用一次
+onEndContact: function (contact, selfCollider, otherCollider) {
+},
+
+// 每次将要处理碰撞体接触逻辑时被调用
+onPreSolve: function (contact, selfCollider, otherCollider) {
+},
+
+// 每次处理完碰撞体接触逻辑时被调用
+onPostSolve: function (contact, selfCollider, otherCollider) {
+}
+
+// 碰撞体的节点获取
+selfCollider.node;
+otherCollider.node
 ```
 ## 关于重力感应
 ```javascript
@@ -171,3 +194,24 @@ cc.sequence(
 ### RevoluteJoint
 * `Max Motor Torque` 表示旋转的增速幅度大小
 * `Motor Speed` 表示期望最终达到的旋转速度
+
+## 关于摄像机跟随
+* 最为简单的方法就是将具有监听事件的脚本绑定在主摄像机上面，同时指定主摄像机的宽度和高度为所需要的大小，这样可以有效的避免因为事件监听脚本绑定在Canvas上面的时候当摄像机移动到其之外范围监听失效的问题
+```javascript
+ // 加边框限制的摄像机跟随
+if (Math.abs(this.target.x - this.node.x) > 100) {
+    if ((this.target.x - this.node.x) > 0) {
+        this.node.x = this.target.x - 100;
+    } else {
+        this.node.x = this.target.x + 100;
+    }
+};
+if (Math.abs(this.target.y - this.node.y) > 100) {
+    if ((this.target.y - this.node.y) > 0) {
+        this.node.y = this.target.y - 100;
+    } else {
+        this.node.y = this.target.y + 100;
+    }
+}
+```
+### 双摄相机

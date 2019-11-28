@@ -1,0 +1,43 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "StartInfo",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 8,
+  "sample": 60,
+  "speed": 1,
+  "wrapMode": 1,
+  "curveData": {
+    "props": {
+      "y": [
+        {
+          "frame": 0,
+          "value": -38.16299819946289
+        },
+        {
+          "frame": 0.5,
+          "value": -89.0459976196289
+        }
+      ],
+      "opacity": [
+        {
+          "frame": 0,
+          "value": 0
+        },
+        {
+          "frame": 0.5,
+          "value": 255
+        },
+        {
+          "frame": 3.5,
+          "value": 255
+        },
+        {
+          "frame": 8,
+          "value": 0
+        }
+      ]
+    }
+  },
+  "events": []
+}
