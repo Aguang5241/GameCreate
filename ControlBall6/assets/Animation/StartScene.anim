@@ -1,0 +1,65 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "StartScene",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 3,
+  "sample": 60,
+  "speed": 1,
+  "wrapMode": 2,
+  "curveData": {
+    "props": {
+      "y": [
+        {
+          "frame": 0,
+          "value": 214.68699645996094
+        },
+        {
+          "frame": 0.16666666666666666,
+          "value": 146.1199951171875
+        },
+        {
+          "frame": 1,
+          "value": 214.68699645996094
+        },
+        {
+          "frame": 2.8333333333333335,
+          "value": -109.44499969482422
+        },
+        {
+          "frame": 3,
+          "value": 214.68699645996094
+        }
+      ]
+    },
+    "paths": {
+      "playerMark": {
+        "props": {
+          "angle": [
+            {
+              "frame": 0,
+              "value": 0
+            },
+            {
+              "frame": 0.75,
+              "value": 90
+            },
+            {
+              "frame": 1.5,
+              "value": 180
+            },
+            {
+              "frame": 2.25,
+              "value": 270
+            },
+            {
+              "frame": 3,
+              "value": 360
+            }
+          ]
+        }
+      }
+    }
+  },
+  "events": []
+}

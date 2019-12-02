@@ -1,6 +1,4 @@
 # 游戏开发笔记
-## 游戏游戏分析
-### 棍子英雄
 
 ## 世上最大坑
 * 千千万万不要命名同样的js文件，即使在不同文件夹里面，虽然程序可以正常运行，但是编译会出现错误！！！
@@ -50,7 +48,10 @@ createEnemy: function () {
     }
     enemy.setPosition(xxx) // 一定要在加入节点树之前设置位置，否则无效
     this.node.addChild(enemy); // 将生成的敌人加入节点树
-    // enemy.getComponent('Enemy').init(); // 接下来就可以调用 enemy 身上的脚本进行初始化
+
+    enemy.getComponent('Enemy').init(); // 接下来就可以调用 enemy 身上的脚本进行初始化
+    // 如果不初始化enemy，在从对象池中获取this.enemyPool.get();的时候，该enemy身上的脚本参数还接着上次调用的时候；
+    // 因为执行this.enemyPool.put();只是把enemy重新放回对象池，并不是真正销毁；执行this.enemyPool.get()又可以重新获取出来；
     enemy.getComponent('Enemy').game = this; // 在Enemy组件上暂存Game组件的引用
 },
 
@@ -198,7 +199,13 @@ cc.sequence(
 ## 关于摄像机跟随
 * 最为简单的方法就是将具有监听事件的脚本绑定在主摄像机上面，同时指定主摄像机的宽度和高度为所需要的大小，这样可以有效的避免因为事件监听脚本绑定在Canvas上面的时候当摄像机移动到其之外范围监听失效的问题
 ```javascript
- // 加边框限制的摄像机跟随
+// 简单跟随
+update (dt) {
+    this.node.x = this.target.x;
+    this.node.y = this.target.y;
+},
+// 加边框限制的摄像机跟随
+update (dt) {
 if (Math.abs(this.target.x - this.node.x) > 100) {
     if ((this.target.x - this.node.x) > 0) {
         this.node.x = this.target.x - 100;
@@ -215,3 +222,68 @@ if (Math.abs(this.target.y - this.node.y) > 100) {
 }
 ```
 ### 双摄相机
+* 系统设置分组并将需要分组的节点设置为该分组
+* 添加摄像机并且设置`cullingMask`渲染所设置的分组即可
+### 小地图
+* 原理就是将摄像机捕获的图像渲染到指定的精灵上面而不是直接投射到屏幕上
+```javascript
+properties: {
+    sprite: {
+        default: null,
+        type: cc.Sprite
+    },
+
+    camera: {
+        default: null,
+        type: cc.Camera
+    }
+},
+start () {
+    let texture = new cc.RenderTexture();
+    texture.initWithSize(cc.visibleRect.width, cc.visibleRect.height);
+
+    let spriteFrame = new cc.SpriteFrame();
+    spriteFrame.setTexture(texture)
+    this.sprite.spriteFrame = spriteFrame;
+    
+    this.camera.targetTexture = texture;
+},
+```
+
+## 关于微信
+* 微信授权---一般在游戏开始时候运行一次即可
+```javascript
+// 获取权限
+let systemInfo = wx.getSystemInfoSync(); // 获取用户设备信息
+let width = systemInfo.windowWidth; // 可使用的窗口宽度
+let height = systemInfo.windowHeight; // 可使用的窗口高度
+let button = wx.createUserInfoButton({
+    type: 'text',
+    text: '',
+    style: {
+        left: 0,
+        top: 0,r
+        width: width,
+        height: height,
+        lineHeight: 40,
+        backgroundColor: '#00000000',
+        color: '#00000000',
+        textAlign: 'center',
+        fontSize: 10,
+        borderRadius: 4
+    }
+})
+
+button.onTap((res) => {
+    let userInfo = res.userInfo;
+
+    // 当没有获取到用户信息
+    if (!userInfo) { 
+        console.log('dot get userInfo')
+        return;
+    }
+
+    button.hide(); // 隐藏用户按钮
+    button.destroy(); // 销毁用户按钮
+})
+```
