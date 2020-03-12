@@ -1,14 +1,16 @@
-# 游戏开发笔记
+# 游戏开发笔记(CocosCreator)
+## 关于游戏设计     cvcx
 
+***********************************************************
 ## 世上最大坑
 * 千千万万不要命名同样的js文件，即使在不同文件夹里面，虽然程序可以正常运行，但是编译会出现错误！！！
-
+***********************************************************
 ## 关于节点和组件
 * `getComponent()`方法针对于获得所在节点上的组件
 * 对于获得其他节点，最简单的方法就是在属性检查器中引用
 * `this.node.parent`可以获取当前节点的父节点
 * 对于label节点，无法直接在其绑定的组件（脚本）中使用`this.node.string = 'xxx'`进行修改，应该将label作为节点进行引用后再修改其文本内容，而且必须事先声明其type为cc.Label
-
+***********************************************************
 ## 组件之间的通讯方法：
 * 发送方使用module.export，接收方使用require
 ```javascript
@@ -24,7 +26,7 @@ var Global = require("Global");
 ```javascript
 newStar.getComponent('Star').game = this;
 ```
-
+***********************************************************
 ## 对象池
 * 如果在预制对象上绑定了物理系统，需要在对应脚本上开启物理系统，否则生成的预制对象物理系统失效
 ```JavaScript
@@ -63,7 +65,7 @@ onEnemyKilled: function (enemy) {
     // this.enemyPool.put(enemy); // 和初始化时的方法一样，将节点放进对象池，这个方法会同时调用节点的 removeFromParent
 },
 ```
-
+***********************************************************
 ## 关于碰撞系统
 * 设置碰撞边缘及tag
 * 在被检测节点设置组件，内容如下
@@ -78,12 +80,12 @@ onLoad () {
     cc.director.getCollisionManager().enabled = true;
 },
 ```
-
+***********************************************************
 ## 关于屏幕适配
 * 选取1280 * 720 （1.7777778）
 `fitHeight`
 `fitWidth`
-
+***********************************************************
 ## 关于物理系统
 * 如果子节点绑定了物理系统，其位移将不会随着父节点变化
 ```javascript
@@ -118,6 +120,7 @@ onPostSolve: function (contact, selfCollider, otherCollider) {
 selfCollider.node;
 otherCollider.node
 ```
+***********************************************************
 ## 关于重力感应
 ```javascript
 cc.Class({
@@ -140,7 +143,7 @@ cc.Class({
 * 其中`event.acc.x; event.acc.y`的值分别为(-1, 1)，表示四个方向的加速度大小
 * `event.acc.x`对应屏幕横向轴，由左到右数值为-1到1
 * `event.acc.y`对应屏幕纵向轴，有下到上数值为-1到1
-
+***********************************************************
 ## 关于动态加载资源
 * 预先将需要的动态加载资源放置在assets/resourses文件夹之下
 ```javascript
@@ -149,7 +152,7 @@ cc.loader.loadRes('white', cc.SpriteFrame, function(err, SpriteFrame) {
     self.player.getComponent(cc.Sprite).spriteFrame = SpriteFrame;
 })
 ```
-
+***********************************************************
 ## 关于龙骨动画
 ```javascript
 // 获取动画所有的ArmatureNames
@@ -166,7 +169,7 @@ this.node.getComponent(dragonBones.ArmatureDisplay).on(dragonBones.EventObject.C
     this.node.getComponent(dragonBones.ArmatureDisplay).playAnimation('run', 0) 
 }, this)
 ```
-
+***********************************************************
 ## 关于动作系统
 * `cc.delayTime(0.66)`可以巧妙地应用在动作系统里面执行一个空动作
 ```javascript
@@ -176,12 +179,12 @@ cc.sequence(
     cc.moveTo(0.17, cc.v2(-400, -220)).easing(cc.easeCubicActionIn())
 );
 ```
-
+***********************************************************
 ## 关于坐标
 * `cc.v2(x1, y1)`是一个`object`类型，不能直接拿来作比较，并不能得到正确的结果
 * 两点之间的向量差`cc.v2(10, 8).sub(cc.v2(5, 4)) == cc.v2(5, 4)`
 * 两点之间的距离`cc.v2(0, 4).sub(cc.v2(3, 0)).mag() == 5`
-
+***********************************************************
 ## 关于物理组件
 * 要使用链接物理组件首先要绑定物理碰撞组件
 ### MotorJoint
@@ -195,7 +198,7 @@ cc.sequence(
 ### RevoluteJoint
 * `Max Motor Torque` 表示旋转的增速幅度大小
 * `Motor Speed` 表示期望最终达到的旋转速度
-
+***********************************************************
 ## 关于摄像机跟随
 * 最为简单的方法就是将具有监听事件的脚本绑定在主摄像机上面，同时指定主摄像机的宽度和高度为所需要的大小，这样可以有效的避免因为事件监听脚本绑定在Canvas上面的时候当摄像机移动到其之外范围监听失效的问题
 ```javascript
@@ -249,7 +252,7 @@ start () {
     this.camera.targetTexture = texture;
 },
 ```
-
+***********************************************************
 ## 关于微信
 * 微信授权---一般在游戏开始时候运行一次即可
 ```javascript
